@@ -38,36 +38,36 @@ export const Navigation = ({ customClass }: { customClass?: string }) => {
         <Link to="/" className="w-10 h-10">
           <img src={WebLogo} alt="Logo" />
         </Link>
-        <Search
+        <div className="flex items-center gap-4">
+			<div             
+				onMouseEnter={() => setIsGenreOpen(true)}
+				onMouseLeave={() => setIsGenreOpen(false)}
+				className="z-20">
+			<button className="font-semibold text-brand-white/200 focus:outline-none">
+				Genre
+			</button>
+			{isGenreOpen && (
+				<div className="absolute bg-white w-max rounded-md shadow-lg grid grid-cols-3 p-1">
+				{genresData?.genres.map((item,index)=>(
+				<Link key={index} to={`/genre/${item.name}`} className="text-center block px-4 py-2 text-brand-grey/200 hover:bg-gray-100 hover:text-brand-grey/500">
+					{item.name}
+				</Link>
+				))}
+				</div>
+			)}
+			</div>
+			<Link to="#" className="py-3 px-4 font-semibold text-brand-white/200">
+			Movies
+			</Link>
+			<Link to="#" className="py-3 px-4 font-semibold text-brand-white/200">
+			TV Show
+			</Link>
+        </div>
+		<Search
           searchQuery={searchQuery}
           handleNavigate={handleNavigate}
           handleOnChangeSearch={handleOnChangeSearch}
         />
-		<div className="relative"             
-			onMouseEnter={() => setIsGenreOpen(true)}
-			onMouseLeave={() => setIsGenreOpen(false)}>
-		<button className="font-semibold text-brand-grey/200 focus:outline-none">
-			Genre
-		</button>
-		{isGenreOpen && (
-			<div className="absolute  bg-white w-max rounded-md shadow-lg grid grid-cols-3">
-			{genresData?.genres.map((item)=>(
-			<Link to="#" className="text-center block px-4 py-2 text-brand-grey/200 hover:bg-gray-100 hover:text-brand-grey/500">
-				{item.name}
-			</Link>
-			))}
-			</div>
-		)}
-		</div>
-        <div className="gap-4">
-			<Link to="#" className="py-3 px-4 font-semibold text-brand-grey/200">
-			Movies
-			</Link>
-			
-			<Link to="#" className="py-3 px-4 font-semibold text-brand-grey/200">
-			TV Show
-			</Link>
-        </div>
       </nav>
     </header>
   );
