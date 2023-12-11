@@ -1,5 +1,5 @@
-import React from "react";
+import { Skeleton } from "@/components/ui/skeleton";
 
 export const MovieCardSkeleton = () => {
-	return <div>MovieCardSkeleton</div>;
+	return <Skeleton className="bg-brand-grey/100 rounded-xl h-[480px] w-full" />;
 };

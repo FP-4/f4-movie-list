@@ -16,7 +16,8 @@ const Home = () => {
 	const [page, setPage] = useState(1);
 	const upcomingRef = useRef<HTMLHeadingElement>(null);
 
-	const { data: trendingMovies, isLoading: isLoadingTrending } = useTrendingMovies();
+	const { data: trendingMovies, isLoading: isLoadingTrending } =
+		useTrendingMovies();
 	const { data: genresData, isLoading: isLoadingGenres } = useMovieGenre();
 	const { data: upComingMovies, isLoading: isLoadingUpcoming } =
 		useUpcomingMovies({
@@ -73,9 +74,8 @@ const Home = () => {
 								/>
 							))}
 						</div>
-						<div className="float-right">
+						<div className="float-right mt-12">
 							<Pagination
-								className="mt-12"
 								total={upComingMovies?.total_results}
 								pageSize={paginateProperty.pageSize}
 								current={page}
